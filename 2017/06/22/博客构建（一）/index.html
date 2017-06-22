@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://yoursite.com/blog/2017/06/22/博客构建（一）/QQ截图20170622162954.png">
 <meta property="og:image" content="http://yoursite.com/blog/2017/06/22/博客构建（一）/QQ截图20170622163438.png">
 <meta property="og:image" content="http://yoursite.com/blog/2017/06/22/博客构建（一）/QQ截图20170622163729.png">
-<meta property="og:updated_time" content="2017-06-22T08:38:21.263Z">
+<meta property="og:updated_time" content="2017-06-22T08:47:05.030Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客构建（一）">
 <meta name="twitter:description" content="相关介绍最近打算自己搞一个自己的博客，看了网络上很多实现方式，最终选择了hexo+oschina的方式。网上大部分都是hexo+github的方式，我之所以不选择github的原因有两个：  github在国内的访问速度实在是 呵呵（前些日子居然还被墙过……） 百度爬虫对github收录的好像也不是很好  简单的介绍一下原理。hexo是一个专门的博客框架，可以把普通的markdown语法的文档转换">
@@ -114,30 +114,21 @@
 <li>github在国内的访问速度实在是 呵呵（前些日子居然还被墙过……）</li>
 <li>百度爬虫对github收录的好像也不是很好</li>
 </ol>
-<p>简单的介绍一下原理。hexo是一个专门的博客框架，可以把普通的markdown语法的文档转换成静态的html文档，并且可以自己定制个性化的主题。那么oschina和github又扮演的什么角色呢？很简单就是可以把hexo生成的静态页面最为项目托管在上述两个平台上。这两个平台都提供了pages功能，用来把你托管的项目部署成可以访问的网站。</p>
+<p>简单的介绍一下原理。hexo是一个专门的博客框架，可以把普通的markdown语法的文档转换成静态的html文档，并且可以自己定制个性化的主题。那么oschina和github又扮演的什么角色呢？很简单就是可以把hexo生成的静态页面做为项目托管在上述两个平台上。这两个平台都提供了pages功能，用来把你托管的项目部署成可以访问的网站。</p>
 <ol>
 <li><a href="https://hexo.io/" target="_blank" rel="external">hexo</a></li>
 <li><a href="http://git.oschina.net/" target="_blank" rel="external">oschina</a></li>
 <li><a href="https://github.com/" target="_blank" rel="external">github</a></li>
 </ol>
 <h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>本人的操作系统是win10 专业版，目前还没有在mac上搞过这个有机会再补充mac版本的。</p>
-<ol>
-<li>nodejs</li>
-</ol>
-<p>hexo的安装需要nodejs环境，所以我们这里先安装<a href="https://nodejs.org/" target="_blank" rel="external">nodejs</a>。</p>
+<h4 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h4><p>hexo的安装需要nodejs环境，所以我们这里先安装<a href="https://nodejs.org/" target="_blank" rel="external">nodejs</a>。</p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622150945.png" alt="安装nodejs"></p>
 <p>一路next不需多说，注意选择一下安装路径就行了。</p>
 <p>node -v 检查一下是否安装成功。<br><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155146.png" alt="node version"></p>
-<ol>
-<li>安装git</li>
-</ol>
-<p>hexo本地编译出博客的静态文件之后需要通过git上传到oschina或github上，所以我们需要安装 <a href="https://git-for-windows.github.io/" target="_blank" rel="external">git</a>这里我安装的是一个git的图形工具，不过这个好像被墙了，我当时是翻墙安装的，当然这个不重要，你也可以去安装<a href="https://git-scm.com/" target="_blank" rel="external">git官方版本</a>。这里我以前已经安装过，图我就不贴了，都是一路next。</p>
+<h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><p>hexo本地编译出博客的静态文件之后需要通过git上传到oschina或github上，所以我们需要安装 <a href="https://git-for-windows.github.io/" target="_blank" rel="external">git</a>这里我安装的是一个git的图形工具，不过这个好像被墙了，我当时是翻墙安装的，当然这个不重要，你也可以去安装<a href="https://git-scm.com/" target="_blank" rel="external">git官方版本</a>。这里我以前已经安装过，图我就不贴了，都是一路next。</p>
 <p>git –version 检查安装是否成功。</p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155324.png" alt="giit --version"></p>
-<ol>
-<li>安装hexo</li>
-</ol>
-<p>首先安装hexo的脚手架工具，联网的情况下：</p>
+<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>首先安装hexo的脚手架工具，联网的情况下：</p>
 <p>npm install hexo-cli -g</p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155757.png" alt="hexo-cli"></p>
 <p>这中间根据网速的快慢，可能需要一会儿。</p>
@@ -146,20 +137,14 @@
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155945.png" alt="hexo"></p>
 <p>hexo -v 检查一下hexo安装情况</p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622160049.png" alt="hexo version"></p>
-<ol>
-<li>注册oschina</li>
-</ol>
-<p>具体注册流程不再说了（其实是因为我早就注册过了，没法提供截图了）</p>
+<h4 id="注册oschina"><a href="#注册oschina" class="headerlink" title="注册oschina"></a>注册oschina</h4><p>具体注册流程不再说了（其实是因为我早就注册过了，没法提供截图了）</p>
 <p>创建项目</p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622160702.png" alt="创建项目"></p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622160918.png" alt="创建项目"></p>
 <p>开启pages</p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622161059.png" alt="开启pages功能"></p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622161154.png" alt="开启pages功能"></p>
-<ol>
-<li>创建本地hexo项目</li>
-</ol>
-<p>首先新建一个空白的文件夹，从cmd进入该目录（我这里是D:\hexo），输入：</p>
+<h4 id="创建本地hexo项目"><a href="#创建本地hexo项目" class="headerlink" title="创建本地hexo项目"></a>创建本地hexo项目</h4><p>首先新建一个空白的文件夹，从cmd进入该目录（我这里是D:\hexo），输入：</p>
 <p>hexo init</p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622161502.png" alt="hexo init"></p>
 <p>接着安装本地项目，还是在(D:\hexo)执行</p>
