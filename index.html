@@ -98,11 +98,67 @@
 <li><a href="http://git.oschina.net/" target="_blank" rel="external">oschina</a></li>
 <li><a href="https://github.com/" target="_blank" rel="external">github</a></li>
 </ol>
-<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><ol>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>本人的操作系统是win10 专业版，目前还没有在mac上搞过这个有机会再补充mac版本的。</p>
+<ol>
 <li>nodejs</li>
 </ol>
 <p>hexo的安装需要nodejs环境，所以我们这里先安装<a href="https://nodejs.org/" target="_blank" rel="external">nodejs</a>。</p>
 <p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622150945.png" alt="安装nodejs"></p>
+<p>一路next不需多说，注意选择一下安装路径就行了。</p>
+<p>node -v 检查一下是否安装成功。<br><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155146.png" alt="node version"></p>
+<ol>
+<li>安装git</li>
+</ol>
+<p>hexo本地编译出博客的静态文件之后需要通过git上传到oschina或github上，所以我们需要安装 <a href="https://git-for-windows.github.io/" target="_blank" rel="external">git</a>这里我安装的是一个git的图形工具，不过这个好像被墙了，我当时是翻墙安装的，当然这个不重要，你也可以去安装<a href="https://git-scm.com/" target="_blank" rel="external">git官方版本</a>。这里我以前已经安装过，图我就不贴了，都是一路next。</p>
+<p>git –version 检查安装是否成功。</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155324.png" alt="giit --version"></p>
+<ol>
+<li>安装hexo</li>
+</ol>
+<p>首先安装hexo的脚手架工具，联网的情况下：</p>
+<p>npm install hexo-cli -g</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155757.png" alt="hexo-cli"></p>
+<p>这中间根据网速的快慢，可能需要一会儿。</p>
+<p>继续安装hexo</p>
+<p>npm install hexo –save</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155945.png" alt="hexo"></p>
+<p>hexo -v 检查一下hexo安装情况</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622160049.png" alt="hexo version"></p>
+<ol>
+<li>注册oschina</li>
+</ol>
+<p>具体注册流程不再说了（其实是因为我早就注册过了，没法提供截图了）</p>
+<p>创建项目</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622160702.png" alt="创建项目"></p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622160918.png" alt="创建项目"></p>
+<p>开启pages</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622161059.png" alt="开启pages功能"></p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622161154.png" alt="开启pages功能"></p>
+<ol>
+<li>创建本地hexo项目</li>
+</ol>
+<p>首先新建一个空白的文件夹，从cmd进入该目录（我这里是D:\hexo），输入：</p>
+<p>hexo init</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622161502.png" alt="hexo init"></p>
+<p>接着安装本地项目，还是在(D:\hexo)执行</p>
+<p>npm install</p>
+<p>接着安装hexo git 部署插件，用来把本地生成的静态文件上传到oschina的插件。</p>
+<p>npm install hexo-deployer-git –save</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622162048.png" alt="hexo-deployer-git"></p>
+<p>修改本地hexo工程的配置文件D:\hexo\_config.yml，在配置文件的最下面：</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622162629.png" alt="_config.yml"></p>
+<p>这其中的repo就是4中创建的项目的git地址，可以这样获得：</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622163223.png" alt="image"></p>
+<p>hexo d -g</p>
+<p>编译本地hexo项目生成html文件并上传到oschina，这个过程中可能会需要输入oschina账号密码，github也是一样的，会要求你输入github账号密码。</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622162747.png" alt="hexo d -g"></p>
+<p>上传结束如图：</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622162954.png" alt="上传结果"></p>
+<p>接下来打开浏览器访问4中开启pages功能的地址：</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622163438.png" alt="访问"></p>
+<p>你看到的可能和我的略有不同，初始hexo项目里只有一个hell world的博客文章，我这个是已经添加了自己文章的首页。</p>
+<p><img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622163729.png" alt="博客首页"></p>
+<p>ok，至此博客搭建的第一步算是成功了，后面会继续更新如何编写自己的博文，以及折腾一些主题什么的东西。</p>
 
       
     </div>
