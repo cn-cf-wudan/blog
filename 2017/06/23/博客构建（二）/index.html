@@ -1,22 +1,571 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>博客构建（二）</title><link rel="stylesheet" href="/blog/css/layout.css">
-<link rel="stylesheet" href="/blog/css/main.css"><link rel="shortcut icon" href="/blog/img/favicon.png"></head><body><header class="base-menu"><div class="menu-wrapper"><div class="menu-layout-bg"></div><nav class="menu-content"><ul class="menu-list"><li class="menu-item"><a href="/" class="menu-link">Journey's Blog</a></li><li class="menu-item"><a href="/blog/archives" class="menu-link">Archives</a></li><li class="menu-item"><a href="/about" class="menu-link">About</a></li></ul></nav></div></header><header class="base-mobile-menu"><div class="mobile-menu-wrapper"><div class="menu-layout-bg"></div><nav class="menu-content"><ul class="menu-list"><li class="menu-item"><a href="/" class="menu-link">Journey's Blog</a></li><li class="menu-item"><a href="/blog/archives" class="menu-link">Archives</a></li><li class="menu-item"><a href="/about" class="menu-link">About</a></li></ul></nav><div id="mobile-menu-toggle" class="toggle-menu"><span class="menu-bar"></span><span class="menu-bar"> </span><span class="menu-bar"></span></div></div></header><div class="base-content"><div class="base-content-main"><article class="article-main"><h1 class="article-title">博客构建（二）</h1><div class="article-meta"><p class="meta-item meta-time"><span class="meta-item-title">发表于: </span>2017-06-23</p><p class="meta-item meta-category"><span class="meta-item-title">分类于: </span><a href="/blog/categories/hexo/" target="_blank" class="category-link">hexo</a></p></div><div class="article-content"><p>今天有时间来折腾一下博客的主题。<a href="https://hexo.io/themes/" target="_blank" rel="external">官方的主题地址</a>，这里面有很多主题，我是用的是 <a href="https://github.com/chaooo/hexo-theme-BlueLake" target="_blank" rel="external">BlueLake</a>，这个主题比较精炼，最主要的是有比较详细的配置说明，比较适合第一次折腾主题的我。折腾过程主要参考 <a href="http://chaoo.oschina.io/2016/12/29/BlueLake%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E7%9A%84%E8%AF%A6%E7%BB%86%E9%85%8D%E7%BD%AE.html" target="_blank" rel="external">BlueLake博客主题的详细配置</a>。闲话少说，我们开始把。</p>
-<h4 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h4><p>进入hexo本地工程的目录，我这里是D:\hexo，执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/chaooo/hexo-theme-BlueLake.</div><div class="line">git themes/BlueLake</div></pre></td></tr></table></figure></p>
-<p>结束之后会把主题相关文件下载到D:\hexo\themes\BlueLake中</p>
-<p><img src="/blog/2017/06/23/博客构建（二）/QQ截图20170623085626.png" alt="主题文件"></p>
-<h4 id="安装主题渲染器"><a href="#安装主题渲染器" class="headerlink" title="安装主题渲染器"></a>安装主题渲染器</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-renderer-jade --save</div><div class="line">npm install hexo-renderer-stylus --save</div></pre></td></tr></table></figure>
-<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>打开根配置文件D:\hexo\_config.yml，修改主题为BlueLake，注意BlueLake为刚刚下载的主题文件目录的名称。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">theme: BlueLake</div></pre></td></tr></table></figure>
-<p>启用之后可以执行：</p>
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+<!-- Baidu Tongji -->
+<script>var _hmt = _hmt || []</script>
+<script async src="//hm.baidu.com/hm.js?07f156f21d5fcd2598344b96ee1be67a"></script>
+<!-- End Baidu Tongji -->
+
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>博客构建（二） | Journey&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="博客,hexo,nodejs,git,indigo">
+    <meta name="description" content="今天有时间来折腾一下博客的主题。官方的主题地址，这里面有很多主题，我是用的是 indigo，这个主题比较精炼，最主要的是有比较详细的配置说明，比较适合第一次折腾主题的我。折腾过程主要参考 indigo博客主题的详细配置。闲话少说，我们开始把。 安装下载主题在主题的github上打包下载：">
+<meta name="keywords" content="博客,hexo,nodejs,git,indigo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客构建（二）">
+<meta property="og:url" content="http://yoursite.com/2017/06/23/博客构建（二）/index.html">
+<meta property="og:site_name" content="Journey&#39;s Blog">
+<meta property="og:description" content="今天有时间来折腾一下博客的主题。官方的主题地址，这里面有很多主题，我是用的是 indigo，这个主题比较精炼，最主要的是有比较详细的配置说明，比较适合第一次折腾主题的我。折腾过程主要参考 indigo博客主题的详细配置。闲话少说，我们开始把。 安装下载主题在主题的github上打包下载：">
+<meta property="og:image" content="http://yoursite.com/blog/2017/06/23/博客构建（二）/QQ截图20170623130205.png">
+<meta property="og:image" content="http://yoursite.com/blog/2017/06/23/博客构建（二）/QQ截图20170623130351.png">
+<meta property="og:image" content="http://yoursite.com/blog/2017/06/23/博客构建（二）/QQ截图20170623131340.png">
+<meta property="og:updated_time" content="2017-06-23T07:09:54.929Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="博客构建（二）">
+<meta name="twitter:description" content="今天有时间来折腾一下博客的主题。官方的主题地址，这里面有很多主题，我是用的是 indigo，这个主题比较精炼，最主要的是有比较详细的配置说明，比较适合第一次折腾主题的我。折腾过程主要参考 indigo博客主题的详细配置。闲话少说，我们开始把。 安装下载主题在主题的github上打包下载：">
+<meta name="twitter:image" content="http://yoursite.com/blog/2017/06/23/博客构建（二）/QQ截图20170623130205.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Journey&#39;s Blog" href="/blog/atom.xml">
+    
+    <link rel="shortcut icon" href="/blog/img/fa.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/blog/img/brand.jpg)">
+      <div class="brand">
+        <a href="/blog/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/blog/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Journey</h5>
+          <a href="mailto:wu_d1989@163.com" title="wu_d1989@163.com" class="mail">wu_d1989@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                时间轴
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/cn-cf-wudan" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/u/5309740295/home" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                微博
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/blog/atom.xml" target="_blank" >
+                <i class="icon icon-lg icon-rss"></i>
+                订阅
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">博客构建（二）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">博客构建（二）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-23T00:45:47.000Z" itemprop="datePublished" class="page-time">
+  2017-06-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/hexo/">hexo</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#下载主题"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">下载主题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装插件"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装插件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启用主题"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">启用主题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#开启标签页"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">开启标签页</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#开启分类页"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">开启分类页</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#启动本地预览"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">启动本地预览</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#站点配置"><span class="post-toc-number">2.</span> <span class="post-toc-text">站点配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本设置"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">基本设置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#feed配置"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">feed配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#jsonContent配置"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">jsonContent配置</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#主题配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">主题配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#菜单配置"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">菜单配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#favicon"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">favicon</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#头像"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">头像</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#email"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">email</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#页面标题-card-theme"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">页面标题 (card theme)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#文章打赏"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">文章打赏</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他设置及问题"><span class="post-toc-number">4.</span> <span class="post-toc-text">其他设置及问题</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-博客构建（二）"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">博客构建（二）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-23 08:45:47" datetime="2017-06-23T00:45:47.000Z"  itemprop="datePublished">2017-06-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/blog/categories/hexo/">hexo</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>今天有时间来折腾一下博客的主题。<a href="https://hexo.io/themes/" target="_blank" rel="external">官方的主题地址</a>，这里面有很多主题，我是用的是 <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external">indigo</a>，这个主题比较精炼，最主要的是有比较详细的配置说明，比较适合第一次折腾主题的我。折腾过程主要参考 <a href="https://github.com/yscoder/hexo-theme-indigo/wiki" target="_blank" rel="external">indigo博客主题的详细配置</a>。闲话少说，我们开始把。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h4><p>在主题的github上打包下载：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/23/博客构建（二）/QQ截图20170623130205.png" alt="下载主题" title="">
+                </div>
+                <div class="image-caption">下载主题</div>
+            </figure>
+<p>结束之后把主题相关文件解压到到D:\hexo\themes\indigo中</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/23/博客构建（二）/QQ截图20170623130351.png" alt="主题文件" title="">
+                </div>
+                <div class="image-caption">主题文件</div>
+            </figure>
+<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p>安装之前一定要确认，hexo版本大于3.0 node大于6.0，不要问我为什么，<br>因为我第一次装的时候node是4.2.x，结果悲剧了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">npm install hexo-renderer-less --save</div><div class="line"></div><div class="line">npm install hexo-generator-feed --save</div><div class="line"></div><div class="line">npm install hexo-generator-json-content --save</div><div class="line"></div><div class="line">npm install hexo-helper-qrcode --save</div></pre></td></tr></table></figure></p>
+<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>打开根配置文件D:\hexo\_config.yml，修改主题为indigo，注意indigo为刚刚下载的主题文件目录的名称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">theme: indigo</div></pre></td></tr></table></figure>
+<h4 id="开启标签页"><a href="#开启标签页" class="headerlink" title="开启标签页"></a>开启标签页</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page tags</div></pre></td></tr></table></figure>
+<p>修改 hexo/source/tags/index.md 的元数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">layout: tags</div><div class="line">comments: false</div><div class="line">---</div></pre></td></tr></table></figure>
+<h4 id="开启分类页"><a href="#开启分类页" class="headerlink" title="开启分类页"></a>开启分类页</h4><p>注意：这个选项只支持card模式，也就是这个主题分了两个版本，一个是card模式，一个是普通模式，分别在项目的不同分支上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page categories</div></pre></td></tr></table></figure></p>
+<p>修改 hexo/source/categories/index.md 的元数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">layout: categories</div><div class="line">comments: false</div><div class="line">---</div></pre></td></tr></table></figure>
+<h4 id="启动本地预览"><a href="#启动本地预览" class="headerlink" title="启动本地预览"></a>启动本地预览</h4><p>在hexo文件夹下执行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s --debug</div></pre></td></tr></table></figure>
-<p>来进行验证，这个命令会在本地启动hexo服务起进行预览，启动成功之后，访问地址<a href="http://localhost:4000，可以看到本地的预览效果。额，当然，如果你看了上一篇博客并改了" target="_blank" rel="external">http://localhost:4000，可以看到本地的预览效果。额，当然，如果你看了上一篇博客并改了</a></p>
+<p>来进行验证，这个命令会在本地启动hexo服务起进行预览，启动成功之后，访问地址 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>，可以看到本地的预览效果。额，当然，如果你看了上一篇博客并改了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># URL</div><div class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</div><div class="line">url: http://yoursite.com</div><div class="line">root: /blog</div><div class="line">permalink: :year/:month/:day/:title/</div><div class="line">permalink_defaults:</div></pre></td></tr></table></figure>
-<p>这是改了之后的访问地址是<a href="http://localhost:4000/blog/，很好，我在本地看到了新的主题已经生效了，so" target="_blank" rel="external">http://localhost:4000/blog/，很好，我在本地看到了新的主题已经生效了，so</a> far so good。</p>
-<p><img src="/blog/2017/06/23/博客构建（二）/QQ截图20170623094239.png" alt="本地预览"></p>
-<h4 id="更新主题"><a href="#更新主题" class="headerlink" title="更新主题"></a>更新主题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd themes/BlueLake</div><div class="line">git pull</div></pre></td></tr></table></figure>
-<p>这个不谈了，就是从主题的git地址跟新文件到本地。</p>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><h5 id="配置博客头和语言"><a href="#配置博客头和语言" class="headerlink" title="配置博客头和语言"></a>配置博客头和语言</h5><p>在D:\hexo\_config.yml中，从上到下依次是标题，副标题，描述，作者，语言类型。该主题目前有七种语言：简体中文（zh-CN），繁体中文（zh-TW），英语（en），法语（fr-FR），德语（de-DE），韩语 （ko）,西班牙语（es-ES）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># Site</div><div class="line">title:Journey&apos;s Blog</div><div class="line">subtitle:</div><div class="line">description:</div><div class="line">author:Journey</div><div class="line">language:zh-CN</div></pre></td></tr></table></figure></p>
-<p><img src="/blog/2017/06/23/博客构建（二）/QQ截图20170623100404.png" alt="预览"></p>
-<p>额，这里有一个小问题，上面的配置中如果出现中文会出现乱码，大概与_config.yml文件的编码有关系，暂时先用英文，不管它，这个不重要。</p>
-<h5 id="设置菜单"><a href="#设置菜单" class="headerlink" title="设置菜单"></a>设置菜单</h5><p>在D:\hexo\themes\BlueLake\_config.yml中设置，注意是主题目录的配置文件，分别对应了首页，归档，关于，和rss，rss是需要插件支持的，后面再说，about需要自定义页面下面来说。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"># Header</div><div class="line">menu:</div><div class="line">  - page: home</div><div class="line">    directory: .</div><div class="line">    icon: fa-home</div><div class="line">  - page: archive</div><div class="line">    directory: archives/</div><div class="line">    icon: fa-archive</div><div class="line">  - page: about</div><div class="line">    directory: about/</div><div class="line">    icon: fa-user</div><div class="line">  - page: rss</div><div class="line">    directory: atom.xml</div><div class="line">    icon: fa-rss</div></pre></td></tr></table></figure></p>
-<h4 id="设置about页面"><a href="#设置about页面" class="headerlink" title="设置about页面"></a>设置about页面</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-</div></article><div id="base-discus"></div></div></div><footer class="base-footer"><div class="footer-wrapper"><span>Journey Using </span><a href="https://github.com/chuguixin/Simple"><span>Simple</span></a><span> Presents For You.</span></div></footer><div class="dom-ready"><script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script><script src="/blog/js/base.js"></script></div></body></html>
+<p>这是改了之后的访问地址是<a href="http://localhost:4000/blog" target="_blank" rel="external">http://localhost:4000/blog</a>，很好，我在本地看到了新的主题已经生效了，so far so good。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/23/博客构建（二）/QQ截图20170623131340.png" alt="本地预览" title="">
+                </div>
+                <div class="image-caption">本地预览</div>
+            </figure>
+<h3 id="站点配置"><a href="#站点配置" class="headerlink" title="站点配置"></a>站点配置</h3><h4 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h4><p>根_config.yml,我的位置在D:\hexo\_config.yml</p>
+<blockquote>
+<p>注意：通常来说我们把hexo\_config.yml称为根config，hexo\themes\indigo\_config.yml称为主题config</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Site</div><div class="line">title: Journey&apos;s Blog</div><div class="line">author: Journey</div><div class="line">keywords: hexo java akka cqrs </div><div class="line">email: wu_d1989@163.com</div></pre></td></tr></table></figure>
+<p>从上往下一次是网站标题，作者，关键字（便于搜索引擎收录），邮箱。</p>
+<h4 id="feed配置"><a href="#feed配置" class="headerlink" title="feed配置"></a>feed配置</h4><p>feed使用来生成xml文档供rss订阅用的插件，在根_config.yml中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#rss</div><div class="line">feed:</div><div class="line">  type: atom</div><div class="line">  path: atom.xml</div><div class="line">  limit: 50</div></pre></td></tr></table></figure>
+<h4 id="jsonContent配置"><a href="#jsonContent配置" class="headerlink" title="jsonContent配置"></a>jsonContent配置</h4><p>这部分配置是用来做站内搜索用的，为了节约资源，可以对 jsonContent 插件生成的数据字段进行配置，减少数据文件大小。<a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="external">jsonContent配置</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#jsonContent</div><div class="line">jsonContent:</div><div class="line">  meta: false</div><div class="line">  pages: false</div><div class="line">  posts:</div><div class="line">    title: true</div><div class="line">    date: true</div><div class="line">    path: true</div><div class="line">    text: true</div><div class="line">    raw: false</div><div class="line">    content: false</div><div class="line">    slug: false</div><div class="line">    updated: false</div><div class="line">    comments: false</div><div class="line">    link: false</div><div class="line">    permalink: false</div><div class="line">    excerpt: false</div><div class="line">    categories: false</div><div class="line">    tags: true</div></pre></td></tr></table></figure>
+<h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><h4 id="菜单配置"><a href="#菜单配置" class="headerlink" title="菜单配置"></a>菜单配置</h4><p>还记得主题配置文件的路径吗？别和站点配置的搞混哦。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home:</div><div class="line">    text: 主页</div><div class="line">    url: /</div><div class="line">  archives:</div><div class="line">    text: 时间轴</div><div class="line">    url: /archives</div><div class="line">  tags:</div><div class="line">    text: 标签</div><div class="line">    url: /tags</div><div class="line">  th-list:</div><div class="line">    text: 分类</div><div class="line">    url: /categories</div><div class="line">  github:</div><div class="line">    url: https://github.com/cn-cf-wudan</div><div class="line">    target: _blank</div><div class="line">  weibo:</div><div class="line">    text: 微博</div><div class="line">    url: http://weibo.com/u/5309740295/home</div><div class="line">    target: _blank</div><div class="line">  rss:</div><div class="line">    text: 订阅</div><div class="line">    url: /atom.xml</div></pre></td></tr></table></figure>
+<p>添加新菜单项时，在 menu 下增加子属性即可。属性说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line"> link:               # fontawesome图标，省略前缀，本主题前缀为 icon-，必须</div><div class="line">   text: About       # 菜单显示的文字，如果省略即默认与图标一致，首字母会转大写</div><div class="line">   url: /about       # 链接，绝对或相对路径，必须</div><div class="line">   target: _blank    # 是否跳出，省略则在当前页面打开</div></pre></td></tr></table></figure>
+<p>fontawesome 图标已集成到主题中，你可以到<a href="http://fontawesome.io/icons/" target="_blank" rel="external">这里</a>挑选图标。</p>
+<h4 id="favicon"><a href="#favicon" class="headerlink" title="favicon"></a>favicon</h4><p>站点显示的图标，会显示在浏览器标签页上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># favicon</div><div class="line">favicon: /img/fa.ico</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意:设置完之后需要把fa.ico放置在D:\hexo\themes\indigo\source\img目录中</p>
+</blockquote>
+<h4 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h4><blockquote>
+<p>注意:设置完之后需要把avatar.jpg放置在D:\hexo\themes\indigo\source\img目录中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">avatar: /img/avatar.jpg</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="email"><a href="#email" class="headerlink" title="email"></a>email</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">email: wu_d1989@163.com</div></pre></td></tr></table></figure>
+<h4 id="页面标题-card-theme"><a href="#页面标题-card-theme" class="headerlink" title="页面标题 (card theme)"></a>页面标题 (card theme)</h4><p>和menu保持一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 页面标题</div><div class="line">tags_title: 标签</div><div class="line">archives_title: 时间轴</div><div class="line">categories_title: 分类</div></pre></td></tr></table></figure>
+<h4 id="文章打赏"><a href="#文章打赏" class="headerlink" title="文章打赏"></a>文章打赏</h4><blockquote>
+<p>注意:设置完之后需要wechat.jpg和alipay.jpg放置在D:\hexo\themes\indigo\source\img目录中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">reward:</div><div class="line">  title: 感谢您的支付，哦不，支持。</div><div class="line">  wechat: /img/wechat.jpg     #微信，关闭设为 false</div><div class="line">  alipay: /img/alipay.jpg     #支付宝，关闭设为 false</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>此外在 crad theme 中，可以通过在 markdown 头部添加 reward: false 来控制某些不想开启打赏的页面。</p>
+<h3 id="其他设置及问题"><a href="#其他设置及问题" class="headerlink" title="其他设置及问题"></a>其他设置及问题</h3><p><a href="https://github.com/yscoder/hexo-theme-indigo/wiki/" target="_blank" rel="external">这里</a>还有很多其他的设置项和常见问题，我的设置也是参考作者的文档，其他的我就不一一列举了，有兴趣的去作者github上看吧。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最後更新時間：<time datetime="2017-06-23T07:09:54.929Z" itemprop="dateUpdated">2017-06-23 15:09:54</time>
+</span><br>
+
+
+        
+        Things change, roll TMD!
+        
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/blog/img/avatar.jpg" alt="Journey">
+            Journey
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/indigo/">indigo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/博客/">博客</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/06/23/博客构建（二）/&title=《博客构建（二）》 — Journey's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/06/23/博客构建（二）/&title=《博客构建（二）》 — Journey's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/06/23/博客构建（二）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《博客构建（二）》 — Journey's Blog&url=http://yoursite.com/2017/06/23/博客构建（二）/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/06/23/博客构建（二）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/blog/2017/06/22/博客构建（一）/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">博客构建（一）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=2137252"></script>
+    <!-- UY END -->
+</section>
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢支持
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/blog/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/blog/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Journey &copy; 2017</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2017/06/23/博客构建（二）/&title=《博客构建（二）》 — Journey's Blog&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2017/06/23/博客构建（二）/&title=《博客构建（二）》 — Journey's Blog&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/06/23/博客构建（二）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《博客构建（二）》 — Journey's Blog&url=http://yoursite.com/2017/06/23/博客构建（二）/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2017/06/23/博客构建（二）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3awW7rMAwEwP7/T6fXB7Rxdin3AZZGJyNtHI0OBCny6yter3/Wz8/fPed/vf78toWBgfFYxuty5T+Qb/0acP2ttzvBwMA4gPFuWyvP7eau3/lhzxgYGBhxEEwSxFlCiYGBgTFjtO9JQioGBgbGShGbh8jkPXkZfHMtjoGB8UBGfuv+/5//pL+BgYHxKMarXLOEb1bEFrvCwMDYmpEHuJUrtiSIJ59/GMvAwMA4gNFuqx2qaP8nORQMDIwTGG3pOAusyXHMDqvoJGBgYDyWkZej7RjEML0rD/dDhouBgbE1YzY8MWtzrlzPLdXEGBgYD2EkJeKsfF0BJEkkBgbGaYw8pZs1A5L2Zx7ofzkCDAyMrRnttVoyGJE0PtvruTwoY2Bg7MqYjUfkrcp2i0mpXOe5GBgYD2fMvpYXoiuXa/UQBgYGxnaMWRsyT9faxmfbbKirXgwMjIcz2q2sX/fPBsV+wWNgYGzNmA1MrIDXL+PqwQsMDIwtGPl219sDbcszTyUxMDBOY+TX9LMrttkQxgcMBgbGAYz1BK4tVvOtR0eDgYFxACNvW64Uru14R15mY2Bg7Mp4lStJDdcx7YgGBgbG3oyVYJe8bka9eesYGBhbMGaXZXWReWvAxcDAOJPRthKTErcd46ibARgYGBgBIy90V+IkBgYGxl8H3Lb9MEteMTAwTmDkg6p5AM0HNW4I8RgYGFsz2tKxDcT52ETOGHY8MDAwnsf4BrT/apiF2DxhAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/blog/', SHARE: true, REWARD: true };
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1262438079&web_id=1262438079')
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '老铁，你干哈去了？';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '老铁，你回来了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

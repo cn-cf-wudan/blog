@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Journey&#39;s Blog</title>
+  
+  <link href="/blog/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2017-06-23T07:09:54.929Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Journey</name>
+    <email>wu_d1989@163.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>博客构建（二）</title>
+    <link href="http://yoursite.com/2017/06/23/%E5%8D%9A%E5%AE%A2%E6%9E%84%E5%BB%BA%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/06/23/博客构建（二）/</id>
+    <published>2017-06-23T00:45:47.000Z</published>
+    <updated>2017-06-23T07:09:54.929Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天有时间来折腾一下博客的主题。<a href="https://hexo.io/themes/" target="_blank" rel="external">官方的主题地址</a>，这里面有很多主题，我是用的是 <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="external">indigo</a>，这个主题比较精炼，最主要的是有比较详细的配置说明，比较适合第一次折腾主题的我。折腾过程主要参考 <a href="https://github.com/yscoder/hexo-theme-indigo/wiki" target="_blank" rel="external">indigo博客主题的详细配置</a>。闲话少说，我们开始把。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="下载主题"><a href="#下载主题" class="headerlink" title="下载主题"></a>下载主题</h4><p>在主题的github上打包下载：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/23/博客构建（二）/QQ截图20170623130205.png" alt="下载主题" title="">
+                </div>
+                <div class="image-caption">下载主题</div>
+            </figure>
+<p>结束之后把主题相关文件解压到到D:\hexo\themes\indigo中</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/23/博客构建（二）/QQ截图20170623130351.png" alt="主题文件" title="">
+                </div>
+                <div class="image-caption">主题文件</div>
+            </figure>
+<h4 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h4><p>安装之前一定要确认，hexo版本大于3.0 node大于6.0，不要问我为什么，<br>因为我第一次装的时候node是4.2.x，结果悲剧了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">npm install hexo-renderer-less --save</div><div class="line"></div><div class="line">npm install hexo-generator-feed --save</div><div class="line"></div><div class="line">npm install hexo-generator-json-content --save</div><div class="line"></div><div class="line">npm install hexo-helper-qrcode --save</div></pre></td></tr></table></figure></p>
+<h4 id="启用主题"><a href="#启用主题" class="headerlink" title="启用主题"></a>启用主题</h4><p>打开根配置文件D:\hexo\_config.yml，修改主题为indigo，注意indigo为刚刚下载的主题文件目录的名称。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">theme: indigo</div></pre></td></tr></table></figure>
+<h4 id="开启标签页"><a href="#开启标签页" class="headerlink" title="开启标签页"></a>开启标签页</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page tags</div></pre></td></tr></table></figure>
+<p>修改 hexo/source/tags/index.md 的元数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">layout: tags</div><div class="line">comments: false</div><div class="line">---</div></pre></td></tr></table></figure>
+<h4 id="开启分类页"><a href="#开启分类页" class="headerlink" title="开启分类页"></a>开启分类页</h4><p>注意：这个选项只支持card模式，也就是这个主题分了两个版本，一个是card模式，一个是普通模式，分别在项目的不同分支上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page categories</div></pre></td></tr></table></figure></p>
+<p>修改 hexo/source/categories/index.md 的元数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">layout: categories</div><div class="line">comments: false</div><div class="line">---</div></pre></td></tr></table></figure>
+<h4 id="启动本地预览"><a href="#启动本地预览" class="headerlink" title="启动本地预览"></a>启动本地预览</h4><p>在hexo文件夹下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s --debug</div></pre></td></tr></table></figure>
+<p>来进行验证，这个命令会在本地启动hexo服务起进行预览，启动成功之后，访问地址 <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>，可以看到本地的预览效果。额，当然，如果你看了上一篇博客并改了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"># URL</div><div class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</div><div class="line">url: http://yoursite.com</div><div class="line">root: /blog</div><div class="line">permalink: :year/:month/:day/:title/</div><div class="line">permalink_defaults:</div></pre></td></tr></table></figure>
+<p>这是改了之后的访问地址是<a href="http://localhost:4000/blog" target="_blank" rel="external">http://localhost:4000/blog</a>，很好，我在本地看到了新的主题已经生效了，so far so good。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/23/博客构建（二）/QQ截图20170623131340.png" alt="本地预览" title="">
+                </div>
+                <div class="image-caption">本地预览</div>
+            </figure>
+<h3 id="站点配置"><a href="#站点配置" class="headerlink" title="站点配置"></a>站点配置</h3><h4 id="基本设置"><a href="#基本设置" class="headerlink" title="基本设置"></a>基本设置</h4><p>根_config.yml,我的位置在D:\hexo\_config.yml</p>
+<blockquote>
+<p>注意：通常来说我们把hexo\_config.yml称为根config，hexo\themes\indigo\_config.yml称为主题config</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># Site</div><div class="line">title: Journey&apos;s Blog</div><div class="line">author: Journey</div><div class="line">keywords: hexo java akka cqrs </div><div class="line">email: wu_d1989@163.com</div></pre></td></tr></table></figure>
+<p>从上往下一次是网站标题，作者，关键字（便于搜索引擎收录），邮箱。</p>
+<h4 id="feed配置"><a href="#feed配置" class="headerlink" title="feed配置"></a>feed配置</h4><p>feed使用来生成xml文档供rss订阅用的插件，在根_config.yml中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#rss</div><div class="line">feed:</div><div class="line">  type: atom</div><div class="line">  path: atom.xml</div><div class="line">  limit: 50</div></pre></td></tr></table></figure>
+<h4 id="jsonContent配置"><a href="#jsonContent配置" class="headerlink" title="jsonContent配置"></a>jsonContent配置</h4><p>这部分配置是用来做站内搜索用的，为了节约资源，可以对 jsonContent 插件生成的数据字段进行配置，减少数据文件大小。<a href="https://github.com/alexbruno/hexo-generator-json-content" target="_blank" rel="external">jsonContent配置</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">#jsonContent</div><div class="line">jsonContent:</div><div class="line">  meta: false</div><div class="line">  pages: false</div><div class="line">  posts:</div><div class="line">    title: true</div><div class="line">    date: true</div><div class="line">    path: true</div><div class="line">    text: true</div><div class="line">    raw: false</div><div class="line">    content: false</div><div class="line">    slug: false</div><div class="line">    updated: false</div><div class="line">    comments: false</div><div class="line">    link: false</div><div class="line">    permalink: false</div><div class="line">    excerpt: false</div><div class="line">    categories: false</div><div class="line">    tags: true</div></pre></td></tr></table></figure>
+<h3 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h3><h4 id="菜单配置"><a href="#菜单配置" class="headerlink" title="菜单配置"></a>菜单配置</h4><p>还记得主题配置文件的路径吗？别和站点配置的搞混哦。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home:</div><div class="line">    text: 主页</div><div class="line">    url: /</div><div class="line">  archives:</div><div class="line">    text: 时间轴</div><div class="line">    url: /archives</div><div class="line">  tags:</div><div class="line">    text: 标签</div><div class="line">    url: /tags</div><div class="line">  th-list:</div><div class="line">    text: 分类</div><div class="line">    url: /categories</div><div class="line">  github:</div><div class="line">    url: https://github.com/cn-cf-wudan</div><div class="line">    target: _blank</div><div class="line">  weibo:</div><div class="line">    text: 微博</div><div class="line">    url: http://weibo.com/u/5309740295/home</div><div class="line">    target: _blank</div><div class="line">  rss:</div><div class="line">    text: 订阅</div><div class="line">    url: /atom.xml</div></pre></td></tr></table></figure>
+<p>添加新菜单项时，在 menu 下增加子属性即可。属性说明如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line"> link:               # fontawesome图标，省略前缀，本主题前缀为 icon-，必须</div><div class="line">   text: About       # 菜单显示的文字，如果省略即默认与图标一致，首字母会转大写</div><div class="line">   url: /about       # 链接，绝对或相对路径，必须</div><div class="line">   target: _blank    # 是否跳出，省略则在当前页面打开</div></pre></td></tr></table></figure>
+<p>fontawesome 图标已集成到主题中，你可以到<a href="http://fontawesome.io/icons/" target="_blank" rel="external">这里</a>挑选图标。</p>
+<h4 id="favicon"><a href="#favicon" class="headerlink" title="favicon"></a>favicon</h4><p>站点显示的图标，会显示在浏览器标签页上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># favicon</div><div class="line">favicon: /img/fa.ico</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意:设置完之后需要把fa.ico放置在D:\hexo\themes\indigo\source\img目录中</p>
+</blockquote>
+<h4 id="头像"><a href="#头像" class="headerlink" title="头像"></a>头像</h4><blockquote>
+<p>注意:设置完之后需要把avatar.jpg放置在D:\hexo\themes\indigo\source\img目录中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">avatar: /img/avatar.jpg</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="email"><a href="#email" class="headerlink" title="email"></a>email</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">email: wu_d1989@163.com</div></pre></td></tr></table></figure>
+<h4 id="页面标题-card-theme"><a href="#页面标题-card-theme" class="headerlink" title="页面标题 (card theme)"></a>页面标题 (card theme)</h4><p>和menu保持一致</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 页面标题</div><div class="line">tags_title: 标签</div><div class="line">archives_title: 时间轴</div><div class="line">categories_title: 分类</div></pre></td></tr></table></figure>
+<h4 id="文章打赏"><a href="#文章打赏" class="headerlink" title="文章打赏"></a>文章打赏</h4><blockquote>
+<p>注意:设置完之后需要wechat.jpg和alipay.jpg放置在D:\hexo\themes\indigo\source\img目录中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">reward:</div><div class="line">  title: 感谢您的支付，哦不，支持。</div><div class="line">  wechat: /img/wechat.jpg     #微信，关闭设为 false</div><div class="line">  alipay: /img/alipay.jpg     #支付宝，关闭设为 false</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>此外在 crad theme 中，可以通过在 markdown 头部添加 reward: false 来控制某些不想开启打赏的页面。</p>
+<h3 id="其他设置及问题"><a href="#其他设置及问题" class="headerlink" title="其他设置及问题"></a>其他设置及问题</h3><p><a href="https://github.com/yscoder/hexo-theme-indigo/wiki/" target="_blank" rel="external">这里</a>还有很多其他的设置项和常见问题，我的设置也是参考作者的文档，其他的我就不一一列举了，有兴趣的去作者github上看吧。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天有时间来折腾一下博客的主题。&lt;a href=&quot;https://hexo.io/themes/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官方的主题地址&lt;/a&gt;，这里面有很多主题，我是用的是 &lt;a href=&quot;https://github.com/y
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="indigo" scheme="http://yoursite.com/tags/indigo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客构建（一）</title>
+    <link href="http://yoursite.com/2017/06/22/%E5%8D%9A%E5%AE%A2%E6%9E%84%E5%BB%BA%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <id>http://yoursite.com/2017/06/22/博客构建（一）/</id>
+    <published>2017-06-22T07:33:33.000Z</published>
+    <updated>2017-06-23T07:10:00.238Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="相关介绍"><a href="#相关介绍" class="headerlink" title="相关介绍"></a>相关介绍</h3><p>最近打算自己搞一个自己的博客，看了网络上很多实现方式，最终选择了hexo+oschina的方式。网上大部分都是hexo+github的方式，我之所以不选择github的原因有两个：</p>
+<ol>
+<li>github在国内的访问速度实在是 呵呵（前些日子居然还被墙过……）</li>
+<li>百度爬虫对github收录的好像也不是很好</li>
+</ol>
+<p>简单的介绍一下原理。hexo是一个专门的博客框架，可以把普通的markdown语法的文档转换成静态的html文档，并且可以自己定制个性化的主题。那么oschina和github又扮演的什么角色呢？很简单就是可以把hexo生成的静态页面做为项目托管在上述两个平台上。这两个平台都提供了pages功能，用来把你托管的项目部署成可以访问的网站。</p>
+<ol>
+<li><a href="https://hexo.io/" target="_blank" rel="external">hexo</a></li>
+<li><a href="http://git.oschina.net/" target="_blank" rel="external">oschina</a></li>
+<li><a href="https://github.com/" target="_blank" rel="external">github</a></li>
+</ol>
+<h3 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h3><p>本人的操作系统是win10 专业版，目前还没有在mac上搞过这个有机会再补充mac版本的。</p>
+<h4 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h4><p>hexo的安装需要nodejs环境，所以我们这里先安装<a href="https://nodejs.org/" target="_blank" rel="external">nodejs</a>。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622150945.png" alt="安装nodejs" title="">
+                </div>
+                <div class="image-caption">安装nodejs</div>
+            </figure>
+<p>一路next不需多说，注意选择一下安装路径就行了。</p>
+<p>node -v 检查一下是否安装成功。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155146.png" alt="node version" title="">
+                </div>
+                <div class="image-caption">node version</div>
+            </figure></p>
+<h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><p>hexo本地编译出博客的静态文件之后需要通过git上传到oschina或github上，所以我们需要安装 <a href="https://git-for-windows.github.io/" target="_blank" rel="external">git</a>这里我安装的是一个git的图形工具，不过这个好像被墙了，我当时是翻墙安装的，当然这个不重要，你也可以去安装<a href="https://git-scm.com/" target="_blank" rel="external">git官方版本</a>。这里我以前已经安装过，图我就不贴了，都是一路next。</p>
+<p>git –version 检查安装是否成功。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155324.png" alt="giit --version" title="">
+                </div>
+                <div class="image-caption">giit --version</div>
+            </figure>
+<h4 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h4><p>首先安装hexo的脚手架工具，联网的情况下：</p>
+<p>npm install hexo-cli -g</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155757.png" alt="hexo-cli" title="">
+                </div>
+                <div class="image-caption">hexo-cli</div>
+            </figure>
+<p>这中间根据网速的快慢，可能需要一会儿。</p>
+<p>继续安装hexo</p>
+<p>npm install hexo –save</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622155945.png" alt="hexo" title="">
+                </div>
+                <div class="image-caption">hexo</div>
+            </figure>
+<p>hexo -v 检查一下hexo安装情况</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622160049.png" alt="hexo version" title="">
+                </div>
+                <div class="image-caption">hexo version</div>
+            </figure>
+<h4 id="注册oschina"><a href="#注册oschina" class="headerlink" title="注册oschina"></a>注册oschina</h4><p>具体注册流程不再说了（其实是因为我早就注册过了，没法提供截图了）</p>
+<p>创建项目</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622160702.png" alt="创建项目" title="">
+                </div>
+                <div class="image-caption">创建项目</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622160918.png" alt="创建项目" title="">
+                </div>
+                <div class="image-caption">创建项目</div>
+            </figure>
+<p>开启pages</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622161059.png" alt="开启pages功能" title="">
+                </div>
+                <div class="image-caption">开启pages功能</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622161154.png" alt="开启pages功能" title="">
+                </div>
+                <div class="image-caption">开启pages功能</div>
+            </figure>
+<h4 id="创建本地hexo项目"><a href="#创建本地hexo项目" class="headerlink" title="创建本地hexo项目"></a>创建本地hexo项目</h4><p>首先新建一个空白的文件夹，从cmd进入该目录（我这里是D:\hexo），输入：</p>
+<p>hexo init</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622161502.png" alt="hexo init" title="">
+                </div>
+                <div class="image-caption">hexo init</div>
+            </figure>
+<p>接着安装本地项目，还是在(D:\hexo)执行</p>
+<p>npm install</p>
+<p>接着安装hexo git 部署插件，用来把本地生成的静态文件上传到oschina的插件。</p>
+<p>npm install hexo-deployer-git –save</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622162048.png" alt="hexo-deployer-git" title="">
+                </div>
+                <div class="image-caption">hexo-deployer-git</div>
+            </figure>
+<p>修改本地hexo工程的配置文件D:\hexo\_config.yml，在配置文件的最下面：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622162629.png" alt="_config.yml" title="">
+                </div>
+                <div class="image-caption">_config.yml</div>
+            </figure>
+<p>这其中的repo就是4中创建的项目的git地址，可以这样获得：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622163223.png" alt="image" title="">
+                </div>
+                <div class="image-caption">image</div>
+            </figure>
+<p>hexo d -g</p>
+<p>编译本地hexo项目生成html文件并上传到oschina，这个过程中可能会需要输入oschina账号密码，github也是一样的，会要求你输入github账号密码。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622162747.png" alt="hexo d -g" title="">
+                </div>
+                <div class="image-caption">hexo d -g</div>
+            </figure>
+<p>上传结束如图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622162954.png" alt="上传结果" title="">
+                </div>
+                <div class="image-caption">上传结果</div>
+            </figure>
+<p>接下来打开浏览器访问4中开启pages功能的地址：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622163438.png" alt="访问" title="">
+                </div>
+                <div class="image-caption">访问</div>
+            </figure>
+<p>你看到的可能和我的略有不同，初始hexo项目里只有一个hell world的博客文章，我这个是已经添加了自己文章的首页。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622163729.png" alt="博客首页" title="">
+                </div>
+                <div class="image-caption">博客首页</div>
+            </figure>
+<p>ok，至此博客搭建的第一步算是成功了，后面会继续更新如何编写自己的博文，以及折腾一些主题什么的东西。</p>
+<p>奥，这里还有一个问题，如果你访问博客后发现[css/js]什么的都加载不出来，还需要修改_config.yml中的</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/blog/2017/06/22/博客构建（一）/QQ截图20170622165518.png" alt="路径问题修改" title="">
+                </div>
+                <div class="image-caption">路径问题修改</div>
+            </figure>
+<p>这里的root:/blog就是<a href="http://journey1989.oschina.io/blog" target="_blank" rel="external">http://journey1989.oschina.io/blog</a><br>中域名后面的部分.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;相关介绍&quot;&gt;&lt;a href=&quot;#相关介绍&quot; class=&quot;headerlink&quot; title=&quot;相关介绍&quot;&gt;&lt;/a&gt;相关介绍&lt;/h3&gt;&lt;p&gt;最近打算自己搞一个自己的博客，看了网络上很多实现方式，最终选择了hexo+oschina的方式。网上大部分都是hexo+gi
+    
+    </summary>
+    
+      <category term="hexo" scheme="http://yoursite.com/categories/hexo/"/>
+    
+    
+      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+      <category term="hexo" scheme="http://yoursite.com/tags/hexo/"/>
+    
+      <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>博客元年</title>
+    <link href="http://yoursite.com/2017/06/22/%E5%8D%9A%E5%AE%A2%E5%85%83%E5%B9%B4/"/>
+    <id>http://yoursite.com/2017/06/22/博客元年/</id>
+    <published>2017-06-22T07:28:38.000Z</published>
+    <updated>2017-06-23T07:09:30.294Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1-写在开始"><a href="#1-写在开始" class="headerlink" title="1. 写在开始"></a>1. 写在开始</h4><p>2017年对于我个人来说是一个奇怪的开始，自从开年以来一路唱衰。诸事不顺，倒霉的事情多了，难免会开始怀疑自己。最近开始试着静下心来认真的思考一些事情，诚然一大堆的烦心事儿有些是自找的，有些也确实是自身的问题，当然也确实有一些是自己的运气有点儿背。不过这些都不重要，重要的是经过这几个月的折腾，多少还是看清了一些东西，自己也确实还有很大的问题。近半年以来确实有所膨胀，为了磨磨性子，就从这个博客开始吧，把步子迈小点儿，要不扯的蛋疼。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;1-写在开始&quot;&gt;&lt;a href=&quot;#1-写在开始&quot; class=&quot;headerlink&quot; title=&quot;1. 写在开始&quot;&gt;&lt;/a&gt;1. 写在开始&lt;/h4&gt;&lt;p&gt;2017年对于我个人来说是一个奇怪的开始，自从开年以来一路唱衰。诸事不顺，倒霉的事情多了，难免会开始怀疑
+    
+    </summary>
+    
+      <category term="随便说说" scheme="http://yoursite.com/categories/%E9%9A%8F%E4%BE%BF%E8%AF%B4%E8%AF%B4/"/>
+    
+    
+      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+</feed>
